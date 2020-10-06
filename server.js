@@ -45,17 +45,24 @@ mongoUtil.connect_to_server((err, client) => {
     try {
       const guild = member.guild;
       const channel = guild.channels.cache.find((c) => c.id === CHANNEL_ID);
-      // FetchWelcomeMessage.fetch_random_message().then((message) => {
-      //   console.log(message);
-      // });
       let result, actualResult;
       actualResult = await db.collection("Messages").find().toArray();
-      // console.log(`Actual result : `, actualResult);
       let length = actualResult.length;
       result = actualResult[getRandomInt(0, length - 1)];
-      // console.log("Result : ", result);
-      channel.send(result.link);
-      channel.send(result.message + ` <@${member.id}>`);
+      // channel.send(result.link);
+      // channel.send(result.message + ` <@${member.id}>`);
+      // channel.send("");
+
+      const embed = new Discord.MessageEmbed();
+      embed.setColor(Math.floor(Math.random() * 16777214) + 1);
+      embed.setTitle("WELCOME _/\\_ വണക്കം");
+      embed.setDescription(result.message + `<@${member.id}>`);
+      embed.setImage(result.link);
+      embed.setFooter(
+        "Also check out the #get-a-role-here channel to get yourselves roles and more privilages!",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRpWAxNhD-0dogjiXXzDtjJ_FRl8neySpvlOA&usqp=CAU"
+      );
+      channel.send(embed);
     } catch (ex) {}
   });
 });
