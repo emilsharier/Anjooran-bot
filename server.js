@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 const TOKEN = process.env.TOKEN;
 const CHANNEL_ID = process.env.CHANNEL_ID;
 
@@ -65,3 +63,11 @@ mongoUtil.connect_to_server((err, client) => {
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+const http = require("http");
+
+http
+  .createServer((req, res, next) => {
+    res.end();
+  })
+  .listen(process.env.PORT || 3000);
