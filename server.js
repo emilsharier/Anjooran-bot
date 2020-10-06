@@ -55,7 +55,7 @@ mongoUtil.connect_to_server((err, client) => {
 
       const embed = new Discord.MessageEmbed();
       embed.setColor(Math.floor(Math.random() * 16777214) + 1);
-      embed.setTitle("WELCOME _/\\_ വണക്കം");
+      embed.setTitle("WELCOME 🙏🏽 വണക്കം");
       embed.setDescription(result.message + `<@${member.id}>`);
       embed.setImage(result.link);
       embed.setFooter(
