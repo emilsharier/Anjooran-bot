@@ -49,9 +49,6 @@ mongoUtil.connect_to_server((err, client) => {
       actualResult = await db.collection("Messages").find().toArray();
       let length = actualResult.length;
       result = actualResult[getRandomInt(0, length - 1)];
-      // channel.send(result.link);
-      // channel.send(result.message + ` <@${member.id}>`);
-      // channel.send("");
 
       const embed = new Discord.MessageEmbed();
       embed.setColor(Math.floor(Math.random() * 16777214) + 1);
@@ -70,11 +67,3 @@ mongoUtil.connect_to_server((err, client) => {
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
-const http = require("http");
-
-http
-  .createServer((req, res, next) => {
-    res.end();
-  })
-  .listen(process.env.PORT || 3000);
